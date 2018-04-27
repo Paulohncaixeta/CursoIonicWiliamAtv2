@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { HomePage } from '../home/home';
+import { formularioPage } from '../formulario/formulario';
+//import { HomePage } from '../home/home';
 
 
 
@@ -17,8 +18,8 @@ export class LoginPage {
   }
 
   public loginForm: FormGroup;
-  public textoUsuario: 'unipam';
-  public textoPassword: '123';
+  public textoUsuario: String;
+  public textoPassword: String;
   public resultado: String;
   
 
@@ -53,7 +54,7 @@ export class LoginPage {
           {
             text: 'Ok',
             handler: () => {
-              this.navCtrl.push(HomePage);
+              this.navCtrl.push(formularioPage);
             }
           }
         ]
