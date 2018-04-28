@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { formularioPage } from '../formulario/formulario';
-//import { HomePage } from '../home/home';
-
 
 
 @Component({
@@ -18,18 +16,17 @@ export class LoginPage {
   }
 
   public loginForm: FormGroup;
-  public textoUsuario: String;
-  public textoPassword: String;
   public resultado: String;
   
 
-  constructor(public formBuilder: FormBuilder, 
-              public navCtrl: NavController, 
-              public alertCtrl: AlertController) 
+  constructor(public navCtrl: NavController, 
+              public alertCtrl: AlertController,
+              public Frb: FormBuilder) 
     {
-     this.loginForm = formBuilder.group({
-      matricula: [this.textoUsuario],
-      password: [this.textoPassword]
+      
+      this.loginForm = Frb.group({
+        matricula: [null, [Validators.required]],
+        password:  [null, [Validators.required]],
       });
     }
 
@@ -78,7 +75,7 @@ export class LoginPage {
       alert.present();
       
     }
-    //this.navCtrl.push('ListarPage', { matricula: values.matricula.trim() })
+    
   }
 
 

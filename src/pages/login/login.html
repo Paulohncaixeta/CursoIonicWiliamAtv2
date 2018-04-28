@@ -7,9 +7,10 @@
 </ion-header>
 
 <ion-content padding>
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
+    
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value);$event.preventDefault()">
 
-    <ion-item [ngClass]="{'error-border':!loginForm.controls.matricula.valid && loginForm.controls.matricula.touched}">
+    <ion-item>
       <ion-label floating>Username</ion-label>
       <ion-input formControlName="matricula" type="text"></ion-input>
     </ion-item>
@@ -19,7 +20,12 @@
       <ion-input formControlName="password" type="password"></ion-input>
     </ion-item>
 
-    <button ion-button full color="primary" [disabled]="!loginForm.valid" style="margin-top: 20px;" type="submit">Entrar</button>
+    <button ion-button full color="primary" 
+                            [disabled]="!loginForm.valid" 
+                            style="margin-top: 20px;" 
+                            type="submit">
+                            Entrar
+    </button>
 
   </form>
 
